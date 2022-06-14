@@ -88,6 +88,7 @@ func (a *Core) retrievablePost(uri string, content []byte, response interface{})
 	var resp *http.Response
 	operation := func() error {
 		var err error
+		log.Infof("post: %+v %+v %+v", uri, content, response)
 		resp, err = a.signedPost(uri, content, response)
 		if err != nil {
 			// Retry if the nonce was invalidated
